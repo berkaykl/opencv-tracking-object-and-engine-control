@@ -32,7 +32,7 @@ while cap.isOpened():
 
             x,y,w,h = cv.boundingRect(contourGreen)
             cv.rectangle(frame, (x,y), (x+w, y+h), [0,255,0], 2)
-            cv.putText(frame, "Dost", (x-5, y-10), cv.FONT_HERSHEY_COMPLEX, 1, [0,255,0], 2)
+            cv.putText(frame, "Friend", (x-5, y-10), cv.FONT_HERSHEY_COMPLEX, 1, [0,255,0], 2)
 
     findRedContours, _ = cv.findContours(hsvRedMask, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     for contourRed in findRedContours:
@@ -40,9 +40,9 @@ while cap.isOpened():
         if (cv.contourArea(contourRed) > 3000):
 
             x,y,w,h = cv.boundingRect(contourRed)
-            ser.write(f"{int(x)}\n".encode())  # Açıyı byte olarak gönder
+            ser.write(f"{int(x)},{int(y)}\n".encode())  # Açıyı byte olarak gönder
             cv.rectangle(frame, (x,y), (x+w, y+h), [0,0,255], 2)
-            cv.putText(frame, "Dusman", (x-5, y-10), cv.FONT_HERSHEY_COMPLEX, 1, [0,0,255], 2)
+            cv.putText(frame, "Enemy", (x-5, y-10), cv.FONT_HERSHEY_COMPLEX, 1, [0,0,255], 2)
 
 
 
